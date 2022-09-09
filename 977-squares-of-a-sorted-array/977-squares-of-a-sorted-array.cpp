@@ -5,7 +5,7 @@ public:
     vector<int> sortedSquares(vector<int>& nums) {
         
         sort(nums.begin(),nums.end(),[](int a,int b){
-            return a*a < b*b;
+            return abs(a) < abs(b);
         });
         
         for(int i=0;i<nums.size();i++){
