@@ -10,12 +10,12 @@ public:
         }
         
         for(auto i:nums){
-            if(mp.find(i-1) != mp.end()){
+            if(mp.count(i-1)>0){
                 continue;
             }else{
                 int streak = 0;
                 int j = i;
-                while(mp.find(j)!=mp.end()){
+                while(mp.count(j)>0){
                     streak++;
                     j++;
                 }
