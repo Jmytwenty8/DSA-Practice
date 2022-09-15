@@ -2,20 +2,20 @@ class Solution {
 public:
     int longestConsecutive(vector<int>& nums) {
         
-        unordered_set<int> mp;
+        unordered_map<int,int> mp;
         int sequence = 0;
         
         for(auto i:nums){
-            mp.insert(i);
+            mp[i]++;
         }
         
         for(auto i:nums){
-            if(mp.count(i-1)>0){
+            if(mp[i-1]>0){
                 continue;
             }else{
-                int streak = 0;
-                int j = i;
-                while(mp.count(j)>0){
+                int streak = 1;
+                int j = i+1;
+                while(mp[j]>0){
                     streak++;
                     j++;
                 }
