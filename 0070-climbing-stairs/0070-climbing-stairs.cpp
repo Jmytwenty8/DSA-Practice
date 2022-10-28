@@ -22,15 +22,27 @@ public:
 //         return dp[n] = oneStep + twoStep;
 //     }
     
+//     int climbStairs(int n){
+//         vector<int> dp(n+1);
+        
+//         dp[0] = dp[1] = 1;
+        
+//         for(int i=2;i<n+1;i++){
+//             dp[i] = dp[i-1]+dp[i-2];
+//         }
+        
+//         return dp[n];
+//     }
+    
     int climbStairs(int n){
-        vector<int> dp(n+1);
+        int prev1 = 0, prev2 = 1, cur = 0;
         
-        dp[0] = dp[1] = 1;
-        
-        for(int i=2;i<n+1;i++){
-            dp[i] = dp[i-1]+dp[i-2];
+        for(int i=1;i<=n;i++){
+            cur = prev1 + prev2;
+            prev1 = prev2;
+            prev2 = cur;
         }
         
-        return dp[n];
+        return cur;
     }
 };
