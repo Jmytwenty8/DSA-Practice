@@ -34,14 +34,13 @@ public:
         while(lo<=hi){
             long long mid = (lo+hi)/2;
             if(check(k,stalls,mid)){
-                // cout<<mid<<" ";
                 ans = mid;
                 lo = mid+1;
             }else{
                 hi = mid-1;
             }
         }
-        return hi;
+        return ans;
     }
 };
 
