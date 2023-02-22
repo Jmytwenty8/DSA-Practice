@@ -10,30 +10,40 @@ using namespace std;
 class Solution{
   public:
     /*You are required to complete this method */
-    int atoi(string str) {
-        // if((int)str[str.size()-1] >= 10){
-        //     return -1;
-        // }
-        int place = 1;
-        int res = 0;
+    
+    int solve(string s, int index,int res){
         
-        for(int i = str.size()-1;i>=0;i--){
-            if(str[i] == 45){
-                if(i != 0){
-                    return -1;
-                }else{
-                    continue;
-                }
-            }
-            if(abs(str[i]) >= 48 && abs(str[i]) <= 57){
-                str[i] -= 48;
-                res += (int)str[i]*place;
-                place *= 10;
+        if(s[index]<48 || s[index]>57){
+            return -1;
+        }
+        
+        if(index == s.size()-1){
+            return res = res* 10 + s[index]-48;
+            
+        }
+        
+        res = res*10+s[index]-48;
+        return solve(s,index+1,res); 
+    }
+    int atoi(string str) {
+        //Your code here
+        
+        int flag = 0;
+        if(str[0] == '-'){
+            flag = 1;
+            str[0] = '0';
+        }
+        
+        int res = solve(str,0,0);
+        
+        if(flag){
+            if(res < 0){
+                return res;
             }else{
-                return -1;
+                return -1*res;
             }
         }
-        if(str[0] == '-') return -res;
+        
         return res;
     }
 };
