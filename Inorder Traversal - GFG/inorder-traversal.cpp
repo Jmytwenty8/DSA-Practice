@@ -31,18 +31,28 @@ struct Node {
 
 class Solution {
   public:
-  void solve(Node* root, vector<int>& res){
-        if(root == NULL) return;
-        solve(root->left,res);
-        res.push_back(root->data);
-        solve(root->right,res);
-    }
     // Function to return a list containing the inorder traversal of the tree.
     vector<int> inOrder(Node* root) {
         // Your code here
-          vector<int> res;
-          solve(root,res);
-          return res;
+        
+        vector<int> res;
+        stack<Node*> s;
+        
+        while(!s.empty() || root){
+            while(root){
+                s.push(root);
+                root = root->left;
+            }
+            
+            if (!s.empty()) {
+                root = s.top();
+                s.pop();
+                res.push_back(root->data);
+                root = root->right;
+            }
+        }
+        
+        return res;
     }
 };
 
