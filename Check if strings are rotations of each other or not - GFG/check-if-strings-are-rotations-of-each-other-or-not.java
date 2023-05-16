@@ -63,6 +63,8 @@ class Solution
                }
                if(j == x.length()){
                    return true;
+               }else{
+                   i = res-1;
                }
            }
         }
