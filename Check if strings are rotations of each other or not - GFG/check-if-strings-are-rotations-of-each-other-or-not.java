@@ -61,7 +61,6 @@ class Solution
                    res++;
                    j++;
                }
-               
                if(j == x.length()){
                    return true;
                }
